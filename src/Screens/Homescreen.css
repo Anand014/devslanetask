@@ -4,31 +4,3 @@
   padding: 5%;
   margin-left: 10%;
 }
-
-.cards {
-  background-color: #fff;
-  padding: 5%;
-  margin: 2%;
-  border-radius: 5%;
-  box-shadow: 3px 2px 30px -6px rgba(0, 0, 0, 0.31);
-  -webkit-box-shadow: 3px 2px 30px -6px rgba(0, 0, 0, 0.31);
-  -moz-box-shadow: 3px 2px 30px -6px rgba(0, 0, 0, 0.31);
-}
-
-.cardHead {
-  display: flex;
-  margin-bottom: 10%;
-}
-.cardMainData {
-  padding: 2%;
-  margin-top: 5%;
-  margin-left: 5%;
-}
-.carddata {
-  margin-top: 5%;
-  padding: 5%;
-}
-
-.details {
-  padding-left: 5%;
-}
