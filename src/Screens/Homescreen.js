@@ -20,7 +20,9 @@ const Homescreen = () => {
       window.alert("Incorrect api");
     }
   }, []);
+
   console.log(cardData, "data");
+
   const loadFunc = () => {
     //scroll 10
   };

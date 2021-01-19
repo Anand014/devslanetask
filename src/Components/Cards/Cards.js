@@ -2,12 +2,13 @@ import React from "react";
 import "./Cards.css";
 const Cards = (props) => {
   const { name, age, gender, dob, phone, picture, email } = props;
+
   return (
     <div className="cards">
       <div className="cardHead">
         <img
           style={{ width: "100px", height: "100px", borderRadius: "50%" }}
-          src={picture}
+          src={picture.large}
         />
         <div className="cardMainData">
           <h4>{name}</h4>
