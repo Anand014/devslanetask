@@ -1,14 +1,15 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  height: 20px;
+  width: 96%;
+  height: 30px;
   padding: 2%;
-  background: coral;
+  background: #19456b;
 }
 
 .navbarHeader {
-  font-weight: 900;
+  color: white;
+  font-weight: 700;
   letter-spacing: 0.3ch;
 }
 
