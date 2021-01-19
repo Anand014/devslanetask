@@ -1,0 +1,19 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 20px;
+  padding: 2%;
+  background: coral;
+}
+
+.navbarHeader {
+  font-weight: 900;
+  letter-spacing: 0.3ch;
+}
+
+.navbarSelect {
+  margin-right: 10%;
+  width: 30%;
+  border-radius: 5%;
+}
