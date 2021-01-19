@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import "./Homescreen.css";
-import InfiniteScroll from "react-infinite-scroller";
 import Cards from "../Components/Cards/Cards";
+// import InfiniteScroll from "react-infinite-scroll-component";
 import { Multiselect } from "multiselect-react-dropdown";
 import { useHistory } from "react-router-dom";
+import { getUsers } from "../Api/Api";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Homescreen = () => {
   let history = useHistory();
-  const [cardData, setCardData] = useState();
+  const [page, setPage] = useState(1);
+  const [cardData, setCardData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [option, setOption] = useState({
     objectArray: [
       { key: "Male", cat: "Gender" },
@@ -26,27 +30,34 @@ const Homescreen = () => {
     selectedValues: [{ key: "US", cat: "nationality" }],
   });
   useEffect(() => {
-    try {
-      Axios.get("https://randomuser.me/api/?results=100&nat=us,dk,fr,gb")
-        .then((res) => {
-          setCardData(res.data.results);
-          console.log(res.data.results);
-        })
-        .catch((err) => {
-          window.alert("Fetching api data failed");
-          window.location.reload();
-        });
-    } catch (error) {
-      window.alert("Incorrect api");
-      window.location.reload();
-    }
-  }, []);
+    const loadUsers = async () => {
+      setLoading(true);
+      const newUser = await getUsers(page);
+      console.log(newUser, "newuser");
+      setCardData((prev) => [...prev, ...newUser]);
+      setLoading(false);
+    };
+    loadUsers();
+    // try {
+    //   Axios.get("")
+    //     .then((res) => {
+    //       setCardData(res.data.results);
+    //       console.log(res.data.results);
+    //     })
+    //     .catch((err) => {
+    //       window.alert("Fetching api data failed");
+    //       window.location.reload();
+    //     });
+    // } catch (error) {
+    //   window.alert("Incorrect api");
+    //   window.location.reload();
+    // }
+  }, [page]);
 
-  console.log(cardData, "data");
-
-  const loadFunc = () => {
-    //scroll 10
+  const fetchData = () => {
+    setPage((prev) => prev + 1);
   };
+
   const onSelect = (selectedList, selectedItem) => {
     setOption({ ...option, selectedValues: selectedList });
     console.log(selectedItem);
@@ -59,7 +70,7 @@ const Homescreen = () => {
         data.gender === "male"
       ) {
         filteredCardGender.push(data);
-        history.push(`/${selectedItem.key}`);
+        history.push(`/gender=${data.gender}`);
       }
       if (
         selectedItem.cat === "Gender" &&
@@ -67,7 +78,7 @@ const Homescreen = () => {
         data.gender === "female"
       ) {
         filteredCardGender.push(data);
-        history.push(`/${selectedItem.key}`);
+        history.push(`/gender=${data.gender}`);
       }
       // if (value.cat === "nationality" && value.key === data.nat) {
       //   filteredCard.push(data);
@@ -92,6 +103,7 @@ const Homescreen = () => {
       >
         <Multiselect
           placeholder="Gender"
+          selectionLimit={1}
           options={option.objectArray}
           groupBy="cat"
           displayValue="key"
@@ -111,19 +123,13 @@ const Homescreen = () => {
         />
       </div>
       <InfiniteScroll
-        pageStart={0}
-        threshold={10}
-        loadMore={loadFunc}
-        hasMore={true || false}
-        //   loader={
-        //     <div className="loader" key={0}>
-        //       Loading ...
-        //     </div>
-        //   }
+        dataLength={cardData && cardData.length} //This is important field to render the next data
+        next={fetchData}
+        hasMore={true}
       >
         {
           <div className="showusers">
-            {cardData ? (
+            {cardData &&
               cardData.map((data, i) => {
                 return (
                   <Cards
@@ -137,10 +143,8 @@ const Homescreen = () => {
                     email={data.email}
                   />
                 );
-              })
-            ) : (
-              <h1>Loading...</h1>
-            )}
+              })}
+            {loading && <h1 style={{ marginLeft: "120%" }}>Loading...</h1>}
           </div>
         }
       </InfiniteScroll>
