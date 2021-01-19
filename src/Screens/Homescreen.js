@@ -15,9 +15,11 @@ const Homescreen = () => {
         })
         .catch((err) => {
           window.alert("Fetching api data failed");
+          window.location.reload();
         });
     } catch (error) {
       window.alert("Incorrect api");
+      window.location.reload();
     }
   }, []);
 
@@ -29,6 +31,7 @@ const Homescreen = () => {
   return (
     <InfiniteScroll
       pageStart={0}
+      threshold={10}
       loadMore={loadFunc}
       hasMore={true || false}
       //   loader={
