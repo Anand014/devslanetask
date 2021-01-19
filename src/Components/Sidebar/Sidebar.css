@@ -3,13 +3,11 @@
   flex-direction: column;
   justify-content: space-evenly;
   width: 200px;
+  height: 100vh;
   position: fixed;
   z-index: 1;
-  top: 100px;
-  left: 10px;
-  height: 35rem;
+  top: 0;
   background: #eee;
-  overflow-x: hidden;
   padding: 8px 0;
 }
 
