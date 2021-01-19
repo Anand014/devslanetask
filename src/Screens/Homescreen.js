@@ -43,6 +43,12 @@ const Homescreen = () => {
 
   useEffect(() => {
     if (gender) {
+      setCardData([]);
+    }
+  }, [gender, nat]);
+
+  useEffect(() => {
+    if (gender) {
       history.push(`/?gender=${gender.value}`);
     }
     let nation = "";
