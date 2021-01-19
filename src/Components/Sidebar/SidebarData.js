@@ -2,13 +2,8 @@ import React from "react";
 
 export const SidebarData = [
   {
-    name: "Dashboard",
-    id: 1,
-    path: "/",
-  },
-  {
     name: "Users",
-    id: 2,
+    id: 1,
     path: "/",
   },
   {

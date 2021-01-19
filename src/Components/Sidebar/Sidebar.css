@@ -1,0 +1,29 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 100px;
+  left: 10px;
+  height: 35rem;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidebar h1 {
+  margin-top: -5rem;
+}
+
+.sidebarContent a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: #2196f3;
+  display: block;
+}
+
+.sidebarContent a:hover {
+  color: #064579;
+}
