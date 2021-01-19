@@ -129,6 +129,7 @@ const Homescreen = () => {
                     phone={data.phone}
                     picture={data.picture}
                     email={data.email}
+                    nat={data.nat}
                   />
                 );
               })}

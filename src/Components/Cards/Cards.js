@@ -1,7 +1,7 @@
 import React from "react";
 import "./Cards.css";
 const Cards = (props) => {
-  const { name, age, gender, dob, phone, picture, email } = props;
+  const { name, age, gender, dob, phone, picture, email, nat } = props;
 
   return (
     <div className="cards">
@@ -37,6 +37,12 @@ const Cards = (props) => {
               <strong>Email:</strong>
             </td>
             <td className="details">{email}</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Nationality:</strong>
+            </td>
+            <td className="details">{nat}</td>
           </tr>
         </table>
       </div>
