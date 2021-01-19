@@ -6,7 +6,7 @@ export const SidebarData = [
     name: "Users",
     id: 1,
     icon: Home,
-    path: "/",
+    path: "/?gender=male",
   },
   {
     name: "Profile",

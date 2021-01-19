@@ -1,8 +1,6 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  margin-left: 13%;
-  /* width: 96%; */
   height: 30px;
   padding: 2%;
   background: #19456b;
@@ -11,11 +9,17 @@
 .navbarHeader {
   color: white;
   font-weight: 700;
+  margin-left: 15%;
   letter-spacing: 0.3ch;
 }
 
-.navbarSelect {
-  margin-right: 10%;
-  width: 30%;
-  border-radius: 5%;
+@media only screen and (max-width: 1445px) {
+  .navbarHeader {
+    margin-left: 20%;
+  }
+}
+@media only screen and (max-width: 1083px) {
+  .navbarHeader {
+    margin-left: 10%;
+  }
 }

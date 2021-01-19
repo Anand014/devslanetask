@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { SidebarData } from "./SidebarData";
 import "./Sidebar.css";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [sidebarData, setSidebarData] = useState(SidebarData);
@@ -14,7 +15,7 @@ const Sidebar = () => {
             <div className="icon">
               <data.icon size="1rem" />
             </div>
-            <a href={data.path}>{data.name}</a>
+            <Link to={data.path}>{data.name}</Link>
           </div>
         );
       })}

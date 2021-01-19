@@ -4,3 +4,32 @@
   padding: 5%;
   margin-left: 10%;
 }
+
+.Filter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 16%;
+  margin-top: 1%;
+}
+
+@media only screen and (max-width: 1445px) {
+  .showusers {
+    grid-template-columns: 1fr 1fr;
+    margin-left: 15%;
+  }
+  .Filter {
+    grid-template-columns: 1fr 1fr;
+    margin-left: 22%;
+  }
+}
+
+@media only screen and (max-width: 1083px) {
+  .showusers {
+    grid-template-columns: 1fr;
+    margin-left: 5%;
+  }
+  .Filter {
+    grid-template-columns: 1fr 1fr;
+    margin-left: 12%;
+  }
+}

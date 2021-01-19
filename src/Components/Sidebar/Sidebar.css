@@ -34,3 +34,9 @@
 .sidebarContent a:hover {
   color: #064579;
 }
+
+@media only screen and (max-width: 1083px) {
+  .sidebar {
+    display: none;
+  }
+}

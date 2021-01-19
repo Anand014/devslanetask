@@ -12,8 +12,11 @@
     "react-dom": "^17.0.1",
     "react-feather": "^2.0.9",
     "react-infinite-scroll-component": "^5.1.0",
+    "react-multiselect-checkboxes": "^0.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-select": "^3.2.0",
+    "react-select-search": "^2.2.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
