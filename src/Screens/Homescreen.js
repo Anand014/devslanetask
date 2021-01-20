@@ -37,10 +37,16 @@ const Homescreen = () => {
 
   const baseUrl = "https://randomuser.me/api/?results=12";
   const getUsers = async (newUrl) => {
-    const users = await (await fetch(newUrl)).json();
-    return users.results;
+    await Axios.get(newUrl)
+      .then((res) => {
+        setCardData((prev) => [...prev, ...res.data.results]);
+        console.log(res.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+        window.alert("Api Error, Pleae reload!!");
+      });
   };
-
   useEffect(() => {
     if (gender || nat) {
       setCardData([]);
@@ -68,14 +74,12 @@ const Homescreen = () => {
     }
 
     const newUrl = `${baseUrl}&page=${page}&gender=${
-      genderParams ? genderParams : gender.value
-    }&nat=${natParams ? natParams : nation}`;
+      gender ? gender.value : genderParams
+    }&nat=${nation ? nation : natParams}`;
     console.log(newUrl, "this is new url");
     const loadUsers = async () => {
       setLoading(true);
-      const newUser = await getUsers(newUrl);
-      console.log(newUser, "newuser");
-      setCardData((prev) => [...prev, ...newUser]);
+      getUsers(newUrl);
       setLoading(false);
     };
     loadUsers();
@@ -94,16 +98,6 @@ const Homescreen = () => {
           placeholder="Select Gender"
           options={options}
         />
-
-        {/* <Multiselect
-          placeholder="Nationality"
-          options={natOption.objectArray}
-          groupBy="cat"
-          displayValue="key"
-          selectedValues={natOption.selectedValues} // Preselected value to persist in dropdown
-          onSelect={natOnSelect} // Function will trigger on select event
-          // onRemove={onRemove} // Function will trigger on remove event
-        /> */}
         <div style={{ marginLeft: "2rem" }}>
           <ReactMultiSelectCheckboxes
             onChange={setNat}
