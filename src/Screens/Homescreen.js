@@ -45,7 +45,7 @@ const Homescreen = () => {
     if (gender || nat) {
       setCardData([]);
     }
-  }, [gender, nat]);
+  }, [gender, nat, genderParams, natParams]);
 
   useEffect(() => {
     if (gender) {
@@ -60,14 +60,16 @@ const Homescreen = () => {
           nation = nation.concat(value.value + ",");
         }
       });
-      history.push(
-        `/?gender=${!gender.value ? "" : gender.value}&nat=${nation}`
-      );
+      if (gender) {
+        history.push(`/?gender=${gender.value}&nat=${nation}`);
+      } else {
+        history.push(`/?nat=${nation}`);
+      }
     }
 
     const newUrl = `${baseUrl}&page=${page}&gender=${
-      !gender.value ? "" : gender.value
-    }&nat=${nation}`;
+      genderParams ? genderParams : gender.value
+    }&nat=${natParams ? natParams : nation}`;
     console.log(newUrl, "this is new url");
     const loadUsers = async () => {
       setLoading(true);
@@ -133,7 +135,7 @@ const Homescreen = () => {
                   />
                 );
               })}
-            {loading && <h1 style={{ marginLeft: "120%" }}>Loading...</h1>}
+            {loading && <h1>Loading...</h1>}
           </div>
         }
       </InfiniteScroll>
