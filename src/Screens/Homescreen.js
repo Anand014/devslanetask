@@ -42,7 +42,7 @@ const Homescreen = () => {
   };
 
   useEffect(() => {
-    if (gender) {
+    if (gender || nat) {
       setCardData([]);
     }
   }, [gender, nat]);
